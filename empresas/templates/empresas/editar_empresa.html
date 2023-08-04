@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Editar Empresa: {{ empresa.nome }}</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" value="{{ empresa.nome }}" required><br>
+    <label for="endereco">Endereço:</label>
+    <input type="text" name="endereco" value="{{ empresa.endereco }}" required><br>
+    <label for="contato">Contato:</label>
+    <input type="text" name="contato" value="{{ empresa.contato }}" required><br>
+    <input type="submit" value="Salvar">
+  </form>
+{% endblock %}

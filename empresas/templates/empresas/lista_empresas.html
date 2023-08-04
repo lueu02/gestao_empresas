@@ -1,0 +1,60 @@
+{% block content %}
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: linear-gradient(#1a232c, black);
+        }
+        .title{
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+        .container {
+            background-color: rgb(0, 0, 0);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(248, 244, 244, 0.1);
+            width: 200%;
+            max-width: 400px;
+            border-style: ridge;
+            border-color: aqua;
+            margin-top: 13%;
+            margin-left: 38%;
+           
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="title">Lista de Empresas</h1>
+
+        <ul style="list-style: none; padding: 0;">
+            {% for empresa in empresas %}
+            <li style="margin-bottom: 10px;">
+                <a href="{% url 'detalhes_empresa' empresa.id %}"
+                    style="display: block; background-color: black; color: white; text-decoration: none; padding: 10px; border-radius: 5px;">
+                    {{ empresa.nome }}
+                </a>
+            </li>
+            {% empty %}
+            <li style="background-color: black; color: rgb(253, 1, 1); text-align: center; padding: 10px; border-radius: 5px;">
+                Nenhuma
+                empresa cadastrada.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+{% endblock %}

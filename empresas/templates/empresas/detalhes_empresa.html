@@ -1,0 +1,62 @@
+{% block content %}
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: linear-gradient(#1a232c, black);
+        }
+
+        .title {
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgb(0, 0, 0);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(248, 244, 244, 0.1);
+            width: 200%;
+            max-width: 400px;
+            border-style: ridge;
+            border-color: aqua;
+            margin-top: 8%;
+            margin-left: 38%;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="title">Detalhes da Empresa: {{ empresa.nome }}</h1>
+
+        
+        <h1>Detalhes da Empresa: {{ empresa.nome }}</h1>
+        <p>Endereço: {{ empresa.endereco }}</p>
+        <p>Contato: {{ empresa.contato }}</p>
+
+        <h2>Funcionários:</h2>
+        <ul>
+            {% for funcionario in funcionarios %}
+            <li>{{ funcionario.nome }} - {{ funcionario.cargo }}</li>
+            {% empty %}
+            <li>Nenhum funcionário cadastrado.</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'cadastrar_funcionario' empresa.id %}">Cadastrar Funcionário</a>
+    </div>
+</body>
+{% endblock %}
